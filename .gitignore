@@ -1,0 +1,30 @@
+# === Rust ===
+**/target/
+**/*.rs.bk
+Cargo.lock
+
+# === WASM ===
+**/pkg/
+**/node_modules/
+**/*.wasm
+
+# === Common Tools ===
+**/*.log
+**/*.swp
+**/*.bak
+**/.DS_Store
+
+# === IDEs ===
+**/.vscode/
+
+# === Docker or build artifacts ===
+/docker-compose.override.yml
+**/*.tar.gz
+**/*.lock
+**/*.tmp
+
+# === env files ===
+.env
+.env.local
+.env.test
+.env.production

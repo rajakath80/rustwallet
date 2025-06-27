@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Uniwallet WASM SDK Test</title>
+</head>
+
+<body>
+    <h1>Test create_wallet()</h1>
+    <button id="testBtn">Create Wallet</button>
+    <pre id="output"></pre>
+
+    <script type="module">
+        import init, { create_wallet } from '../pkg/wasm_sdk.js';
+
+        async function run() {
+            await init(); // Initializes the WASM module
+
+            const output = document.getElementById('output');
+
+            const request = {
+                email: "test@example.com",
+                password: "securepassword123",
+                threshold: 2,
+                total: 3
+            };
+
+            try {
+                const result = await create_wallet("http://localhost:8080", request);
+                output.textContent = JSON.stringify(result, null, 2);
+            } catch (err) {
+                output.textContent = "Error: " + err;
+            }
+        }
+
+        document.getElementById('testBtn').addEventListener('click', run);
+    </script>
+</body>
+
+</html>
